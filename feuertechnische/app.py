@@ -1,13 +1,21 @@
 from aiohttp import web
 import asyncio
 
-from equipment .abs_equip import FireEquipment
+from equipment.fire_equipment.hose import HoseFabric
 
+RUSSIAN66_1 = HoseFabric.create_hose(66)
+RUSSIAN66_2 = HoseFabric.create_hose(66)
 async def handle(request):
     name = request.match_info.get("name", "firefighter")
     text = "Hi, " + name
-    fireTest = FireEquipment().kingdom_name
-    text = text + '\n' + f"this is your {fireTest}"
+    #FireEquipment().kingdom_name
+    hose_test1 = RUSSIAN66_1.tool_property
+    hose_test2 = RUSSIAN66_2.tool_property
+    text = text + '\n' + f"""
+        first hose:{hose_test1}, 
+        second: {hose_test2}
+    """
+
     return web.Response(text = text)
 
 app = web.Application()
