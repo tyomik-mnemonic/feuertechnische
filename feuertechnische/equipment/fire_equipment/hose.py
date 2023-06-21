@@ -16,8 +16,12 @@ class AbcHose(Equipment):
              #TODO:окончить лист по необходиомости (или передпавать в
              #фабричном методе
         }
+        self.img = None
     def name(self):
         return self.name
+    
+    def img(self):
+        return self.img
 
     def tool_property(self):
         return self.tool_property
@@ -40,6 +44,9 @@ class AbcHose(Equipment):
     def description(self, description):
         self.description = description
 
+    def img_set(self, img):
+        self.img = img
+
 class RusSixtySix(AbcHose):
 
     def __init__(self):
@@ -54,17 +61,19 @@ class RusSixtySix(AbcHose):
         tool_property['weight'] = 0.55
         self.tool_property_set(tool_property)
 
-    def name(self):
-        return self.name
+class RusFiftyOne(AbcHose):
 
-    def tool_property(self):
-        return self.tool_property
+    def __init__(self):
+        super()
+        self.name_set = 'Russian sixty six'
+        tool_property = {}
+        tool_property['diameter'] = 51
+        tool_property['pressure'] = 16
+        tool_property['resistance'] = 0.013
+        tool_property['throughput rate'] = 11
+        tool_property['weight'] = 0.45
+        self.tool_property_set(tool_property)
 
-    def type_tags(self):
-        return self.type_tags
-
-    def description(self):
-        return self.description
 
 class HoseFabric:
 
@@ -72,5 +81,7 @@ class HoseFabric:
     def create_hose(diameter:str):
         if diameter == 66:
             return RusSixtySix()
+        elif diameter == 51:
+            return RusFiftyOne()
         else:
             raise "This hose wasnt be found"
