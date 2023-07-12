@@ -1,7 +1,7 @@
 from aiohttp import web
 import asyncio
 
-from equipment.tools_setter import HosesSetter
+from equipment.hoses_setter import HosesSetter
 
 async def handle(request):
     name = request.match_info.get("name", "firefighter")
