@@ -7,7 +7,8 @@ class AbcHose(Equipment):
         type_tags=None,
         description=None,
         tool_property=None,
-        img=None
+        img=None,
+        admin_property=None
     ):
         self.type_tags = 'fire'
         self.name = 'hose'
@@ -21,6 +22,11 @@ class AbcHose(Equipment):
              "weight":0
              #TODO:окончить лист по необходиомости (или передпавать в
              #фабричном методе
+        }
+        self.admin_property = {
+            "made_date":None,
+            "start_date":None,
+            "repair_date":[]
         }
         self.img = None
 
@@ -47,6 +53,10 @@ class AbcHose(Equipment):
     @property
     def img(self):
         return self._img
+
+    @property()
+    def admin_property(self):
+        return self._admin_property
     
     @name.setter
     def name(self, name:str):
@@ -67,6 +77,10 @@ class AbcHose(Equipment):
     @img.setter
     def img(self, img):
         self._img = img
+
+    @admin_property.setter
+    def admin_property(self, admin_property):
+        self._admin_property = admin_property
 
 class RusSixtySix(AbcHose):
 
