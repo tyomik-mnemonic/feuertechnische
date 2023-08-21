@@ -9,7 +9,9 @@ class AbcHose(Equipment):
         tool_property=None,
         img=None,
         admin_property=None
+        
     ):
+        #admin_property наверное стоит сделать свойством родителя
         self.type_tags = 'fire'
         self.name = 'hose'
         self.description = ''
